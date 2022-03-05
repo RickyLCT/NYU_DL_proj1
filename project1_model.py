@@ -156,7 +156,7 @@ def main():
         test_acc_history.append(test_acc)
         print('Epoch %s, Train loss %.6f, Test loss %.6f, Train acc %.6f, Test acc %.6f'%(epoch, train_loss, test_loss, train_acc, test_acc))
     
-    torch.save(net.state_dict(), path)
+    torch.save({'model':net.state_dict()}, './model_file/project1_model.pt')
     
     plt.plot(range(epoch_num),train_loss_history,'-',linewidth=3,label='Train error')
     plt.plot(range(epoch_num),test_loss_history,'-',linewidth=3,label='Test error')
