@@ -14,12 +14,13 @@ if not train_on_gpu:
     print('CUDA is not available')
 else:
     print('CUDA is available')
-        
+     
+path = '/model_file'
 
 # set the hyperparameter
 batch_size = 64
 learning_rate = 0.01
-epoch_num = 10
+epoch_num = 2
 
 # load the dataset
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
@@ -31,6 +32,7 @@ testdata = datasets.CIFAR10('data', train=False, download=True, transform=transf
 train_loader = torch.utils.data.DataLoader(traindata, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(testdata, batch_size=batch_size, shuffle=False)
 
+classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
 
 class BasicBlock(nn.Module):
@@ -152,8 +154,9 @@ def main():
         test_loss_history.append(test_loss)
         test_acc = test_acc / len(test_loader)
         test_acc_history.append(test_acc)
-        print('Epoch %s, Train loss %.6f, Test loss %.6f, Train acc %.6f, Test acc %.6f'%(i, train_loss, test_loss, train_acc, test_acc))
+        print('Epoch %s, Train loss %.6f, Test loss %.6f, Train acc %.6f, Test acc %.6f'%(epoch, train_loss, test_loss, train_acc, test_acc))
     
+    torch.save(net.state_dict(), path)
     
     plt.plot(range(epoch_num),train_loss_history,'-',linewidth=3,label='Train error')
     plt.plot(range(epoch_num),test_loss_history,'-',linewidth=3,label='Test error')
