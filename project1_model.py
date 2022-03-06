@@ -17,7 +17,7 @@ else:
 # set the hyperparameter
 batch_size = 64
 learning_rate = 0.01
-epoch_num = 2
+epoch_num = 100
 
 
 def train_transform(x):
@@ -202,7 +202,6 @@ def main():
             num_correct += (pred==labels).sum().item()
     test_loss = test_loss / len(test_loader)
     test_acc = num_correct / len(testdata)
-    print(num_correct)
     print('Testing set, Average loss %.6f, Average acc = {%.0f} / {%.0f} = %.6f'%(test_loss, num_correct, len(testdata), test_acc))
     
 if __name__ == '__main__':

@@ -1,0 +1,73 @@
+Welcome to the XWin X Server
+Vendor: Moba/X
+Release: 1.21.1.3
+OS: Windows 10  [Windows NT 10.0 build 19044] x86-on-x64
+Package: version  built 2022-01-16
+
+XWin was started with the following command line:
+
+
+ D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\bin\XWin_MobaX.exe 
+ -silent-dup-error -notrayicon -nolisten inet6 -hostintitle +bs 
+ -clipboard -nowgl -screen 0 @1 -multiwindow -noreset :0 
+
+ddxProcessArgument - Initializing default screens
+winInitializeScreenDefaults - primary monitor w 2560 h 1440
+winInitializeScreens - 1
+winInitializeScreen - 0
+ddxProcessArgument - screen - Found Valid ``@Monitor'' = 1 arg
+(==) FontPath set to /usr/share/fonts/misc/
+(==) FontPath set to D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/misc/
+(==) FontPath set to /usr/share/fonts/TTF/
+(==) FontPath set to D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/TTF/
+(==) FontPath set to /usr/share/fonts/OTF/
+(==) FontPath set to D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/OTF/
+(==) FontPath set to /usr/share/fonts/Type1/
+(==) FontPath set to D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/Type1/
+(==) FontPath set to /usr/share/fonts/100dpi/
+(==) FontPath set to D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/100dpi/
+(==) FontPath set to /usr/share/fonts/75dpi/
+(==) FontPath set to D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/75dpi/
+(==) FontPath set to "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/misc/,D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/TTF/,D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/OTF/,D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/Type1/,D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/100dpi/,D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash/usr/share/fonts/75dpi/"
+(==) Setting XKEYSYMDB path to XKEYSYMDB=D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\usr\share\X11\XKeysymDB
+(==) Setting XERRORDB path to XERRORDB=D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\usr\share\X11\XErrorDB
+(==) Setting XLOCALEDIR path to XLOCALEDIR=D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\usr\share\X11\locale
+(==) Logfile set to "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\var\log\xwin\XWin.0.log"
+(==) Setting XKB path to D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\usr\share\X11\xkb
+[394931.046] winUpdateDpi - primary monitor native DPI x 96 y 96
+[394931.046] winDetectSupportedEngines - RemoteSession: no
+[394931.203] winDetectSupportedEngines - DirectDraw4 installed, allowing ShadowDDNL
+[394931.203] winDetectSupportedEngines - Returning, supported engines 00000005
+[394931.203] winSetEngine - Multi Window or Rootless => ShadowGDI
+[394931.203] winScreenInit - Using Windows display depth of 32 bits per pixel
+[394931.484] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[394931.484] winFinishScreenInitFB - Masks: 00ff0000 0000ff00 000000ff
+[394931.484] winInitVisualsShadowGDI - Masks 00ff0000 0000ff00 000000ff BPRGB 8 d 24 bpp 32
+[394931.531] (II) IGLX: Loaded and initialized swrast
+[394931.531] (II) GLX: Initialized DRISWRAST GL provider for screen 0
+[394931.593] (II) [XKB]  "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\var\log\xwin\xkb_a23484" file successfully created.
+[394931.593] (II) [XKB]  Launching xkbcomp.exe with the following command:
+[394931.593] (II) [XKB]  "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\bin\xkbcomp_w32.exe" -w 1 "-RD:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\usr\share\X11\xkb" -xkm "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\var\log\xwin\xkb_a23484" -em1 "The XKEYBOARD keymap compiler (xkbcomp) reports:" -emp "> " -eml "Errors from xkbcomp are not fatal to the X server" "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\var\log\xwin\server-0.xkm"
+[394931.593] (II) [XKB]  LaunchXkbComp(II) :  succeeded
+[394931.812] (II) [XKB]  Successfully created keyboard mapping file "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\var\log\xwin\xkb_a23484"
+[394931.812] winPointerWarpCursor - Discarding first warp: 2240 720
+[394931.812] (--) 16 mouse buttons found
+[394931.812] (--) Setting autorepeat to delay=500, rate=31
+[394931.812] (--) Windows keyboard layout: "00000804" (00000804) "Chinese (Simplified) - US Keyboard", type 4
+[394931.812] (--) Found matching XKB configuration "Chinese (Simplified)"
+[394931.812] (--) Model = "pc105" Layout = "cn" Variant = "none" Options = "none"
+[394931.812] Rules = "base" Model = "pc105" Layout = "cn" Variant = "none" Options = "none"
+[394931.828] (II) [XKB]  "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\var\log\xwin\xkb_a23484" file successfully created.
+[394931.828] (II) [XKB]  Launching xkbcomp.exe with the following command:
+[394931.828] (II) [XKB]  "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\bin\xkbcomp_w32.exe" -w 1 "-RD:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\usr\share\X11\xkb" -xkm "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\var\log\xwin\xkb_a23484" -em1 "The XKEYBOARD keymap compiler (xkbcomp) reports:" -emp "> " -eml "Errors from xkbcomp are not fatal to the X server" "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\var\log\xwin\server-0.xkm"
+[394931.828] (II) [XKB]  LaunchXkbComp(II) :  succeeded
+[394931.875] (II) [XKB]  Successfully created keyboard mapping file "D:\Study\NYU\semester 2\Deep Learning\Project\project 1\project1_repo\slash\var\log\xwin\xkb_a23484"
+[394931.890] winInitMultiWindowWM - DISPLAY=127.0.0.1:0.0
+[394931.890] winMultiWindowXMsgProc - DISPLAY=127.0.0.1:0.0
+[394931.890] winMultiWindowXMsgProc - xcb_connect() returned and successfully opened the display.
+[394931.890] winProcEstablishConnection - winInitClipboard returned.
+[394931.890] winInitMultiWindowWM - xcb_connect () returned and successfully opened the display.
+[394931.890] winClipboardThreadProc - DISPLAY=127.0.0.1:0.0
+[394931.890] Using Composite redirection
+[394931.890] winClipboardProc - xcb_connect () returned and successfully opened the display.
+[394935.562] winWindowProc - WM_EXITSIZEMOVE
