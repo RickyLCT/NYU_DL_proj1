@@ -18,6 +18,7 @@ else:
 batch_size = 64
 learning_rate = 0.01
 epoch_num = 100
+momentum = 0.9
 
 
 def train_transform(x):
@@ -116,7 +117,7 @@ def project1_model():
 
 net = project1_model().cuda()
 loss = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(net.parameters(), lr = learning_rate)
+optimizer = torch.optim.SGD(net.parameters(), lr=learning_rate, momentum=momentum)
 
 train_loss_history = []
 vali_loss_history = []
