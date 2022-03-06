@@ -4,7 +4,6 @@ import torch.nn.functional as F
 import torchvision
 import torchvision.transforms as transforms
 from torchvision import datasets
-import numpy as np
 import matplotlib.pyplot as plt
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -26,9 +25,11 @@ transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4
 #transform = transforms.Compose([transforms.ToTensor()])
                                 
 traindata = datasets.CIFAR10('data', train=True, download=True, transform=transform)
+traindata, validata = torch.utils.data.random_split(traindata,[40000, 10000])
 testdata = datasets.CIFAR10('data', train=False, download=True, transform=transform)
 
 train_loader = torch.utils.data.DataLoader(traindata, batch_size=batch_size, shuffle=True)
+vali_loader = torch.utils.data.DataLoader(validata, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(testdata, batch_size=batch_size, shuffle=False)
 
 classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
@@ -104,13 +105,13 @@ loss = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(net.parameters(), lr = learning_rate)
 
 train_loss_history = []
-test_loss_history = []
+vali_loss_history = []
 train_acc_history = []
-test_acc_history = []
+vali_acc_history = []
 
 def main():
     for epoch in range(epoch_num):
-        print(epoch)
+        
         train_loss = 0.0
         train_acc = 0.0
         net.train()
@@ -134,31 +135,32 @@ def main():
         train_acc = train_acc / len(train_loader)
         train_acc_history.append(train_acc)
         
-        test_loss = 0.0
-        test_acc = 0.0
+        vali_loss = 0.0
+        vali_acc = 0.0
         net.eval()
-        for j, data in enumerate(test_loader):
+        for j, data in enumerate(vali_loader):
             with torch.no_grad():
                 images, labels = data
                 images = images.cuda()
                 labels = labels.cuda()
                 predicted_output = net(images)
                 fit = loss(predicted_output,labels)
-                test_loss += fit.item()
+                vali_loss += fit.item()
                 _, pred = predicted_output.max(1)
                 num_correct = (pred==labels).sum().item()
                 acc = num_correct / images.shape[0]
-                test_acc += acc
-        test_loss = test_loss / len(test_loader)
-        test_loss_history.append(test_loss)
-        test_acc = test_acc / len(test_loader)
-        test_acc_history.append(test_acc)
-        print('Epoch %s, Train loss %.6f, Test loss %.6f, Train acc %.6f, Test acc %.6f'%(epoch, train_loss, test_loss, train_acc, test_acc))
+                vali_acc += acc
+        vali_loss = vali_loss / len(vali_loader)
+        vali_loss_history.append(vali_loss)
+        vali_acc = vali_acc / len(vali_loader)
+        vali_acc_history.append(vali_acc)
+        print('Epoch %s, Train loss %.6f, Validation loss %.6f, Train acc %.6f, Validation acc %.6f'%(epoch, train_loss, vali_loss, train_acc, vali_acc))
+        
     
     torch.save({'model':net.state_dict()}, './model_file/project1_model.pt')
-    
+     
     plt.plot(range(epoch_num),train_loss_history,'-',linewidth=3,label='Train error')
-    plt.plot(range(epoch_num),test_loss_history,'-',linewidth=3,label='Test error')
+    plt.plot(range(epoch_num),vali_loss_history,'-',linewidth=3,label='Validation error')
     plt.xlabel('epoch')
     plt.ylabel('loss')
     plt.grid(True)
@@ -166,11 +168,28 @@ def main():
 
 
     plt.plot(range(epoch_num),train_acc_history,'-',linewidth=3,label='Train accuracy')
-    plt.plot(range(epoch_num),test_acc_history,'-',linewidth=3,label='Test accuracy')
+    plt.plot(range(epoch_num),vali_acc_history,'-',linewidth=3,label='Validation accuracy')
     plt.xlabel('epoch')
     plt.ylabel('accuracy')
     plt.grid(True)
     plt.legend()
+    
+    test_loss = 0.0
+    num_correct = 0
+    for j, data in enumerate(test_loader):
+        with torch.no_grad():
+            images, labels = data
+            images = images.cuda()
+            labels = labels.cuda()
+            predicted_output = net(images)
+            fit = loss(predicted_output,labels)
+            test_loss += fit.item()
+            _, pred = predicted_output.max(1)
+            num_correct += (pred==labels).sum().item()
+    test_loss = test_loss / len(test_loader)
+    test_acc = num_correct / len(testdata)
+    print(num_correct)
+    print('Testing set, Average loss %.6f, Average acc = {%.0f} / {%.0f} = %.6f'%(test_loss, num_correct, len(testdata), test_acc))
     
 if __name__ == '__main__':
     main()
