@@ -1,8 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torchvision
-import torchvision.transforms as transforms
+from torchvision import transforms
 from torchvision import datasets
 import matplotlib.pyplot as plt
 import ssl
@@ -18,15 +17,30 @@ else:
 # set the hyperparameter
 batch_size = 64
 learning_rate = 0.01
-epoch_num = 100
+epoch_num = 2
 
+
+def train_transform(x):
+    image_aug = transforms.Compose([transforms.RandomHorizontalFlip(),
+                                    transforms.RandomRotation(45),
+                                    transforms.ColorJitter(brightness=0.5, contrast=0.5, hue=0.5),
+                                    transforms.RandomGrayscale(p=0.5),
+                                    transforms.ToTensor(),
+                                    transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
+    x = image_aug(x)
+    return x
+
+def test_transform(x):
+    image_aug = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
+    x = image_aug(x)
+    return x
+    
 # load the dataset
-transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
-#transform = transforms.Compose([transforms.ToTensor()])
+#transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
                                 
-traindata = datasets.CIFAR10('data', train=True, download=True, transform=transform)
+traindata = datasets.CIFAR10('data', train=True, download=True, transform=train_transform)
 traindata, validata = torch.utils.data.random_split(traindata,[40000, 10000])
-testdata = datasets.CIFAR10('data', train=False, download=True, transform=transform)
+testdata = datasets.CIFAR10('data', train=False, download=True, transform=test_transform)
 
 train_loader = torch.utils.data.DataLoader(traindata, batch_size=batch_size, shuffle=True)
 vali_loader = torch.utils.data.DataLoader(validata, batch_size=batch_size, shuffle=True)
