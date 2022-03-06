@@ -15,12 +15,11 @@ if not train_on_gpu:
 else:
     print('CUDA is available')
      
-path = '/model_file'
 
 # set the hyperparameter
 batch_size = 64
 learning_rate = 0.01
-epoch_num = 2
+epoch_num = 100
 
 # load the dataset
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
