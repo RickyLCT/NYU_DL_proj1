@@ -16,7 +16,7 @@ else:
 
 # set the hyperparameter
 batch_size = 64
-learning_rate = 0.01
+learning_rate = 0.05
 epoch_num = 100
 momentum = 0.9
 weight_decay = 5e-4
@@ -119,7 +119,6 @@ def project1_model():
 net = project1_model().cuda()
 loss = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(net.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
-
 train_loss_history = []
 vali_loss_history = []
 train_acc_history = []
@@ -181,7 +180,6 @@ def main():
     plt.ylabel('loss')
     plt.grid(True)
     plt.legend()
-
 
     plt.plot(range(epoch_num),train_acc_history,'-',linewidth=3,label='Train accuracy')
     plt.plot(range(epoch_num),vali_acc_history,'-',linewidth=3,label='Validation accuracy')
