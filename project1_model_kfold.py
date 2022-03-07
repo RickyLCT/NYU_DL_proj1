@@ -207,6 +207,8 @@ def main():
     test_loss = test_loss / len(test_loader)
     test_acc = num_correct / len(testdata)
     print('Testing set, Average loss %.6f, Average acc = {%.0f} / {%.0f} = %.6f'%(test_loss, num_correct, len(testdata), test_acc))
+
+    
     
 if __name__ == '__main__':
     main()
