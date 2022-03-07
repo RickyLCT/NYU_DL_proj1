@@ -16,7 +16,7 @@ else:
 
 # set the hyperparameter
 batch_size = 64
-learning_rate = 0.05
+learning_rate = 0.001
 epoch_num = 100
 momentum = 0.9
 weight_decay = 5e-4
