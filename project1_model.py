@@ -8,6 +8,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 train_on_gpu = torch.cuda.is_available()
+# check whether CUDA is available
 if not train_on_gpu:
     print('CUDA is not available')
 else:
@@ -187,7 +188,11 @@ def main():
     plt.ylabel('accuracy')
     plt.grid(True)
     plt.legend()
+<<<<<<< HEAD
 
+=======
+# save the result
+>>>>>>> c35190aace719a17279441ef91f89b5e87d0cf5e
 
     test_loss = 0.0
     num_correct = 0
