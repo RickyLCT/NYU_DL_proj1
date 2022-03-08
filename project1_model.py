@@ -78,7 +78,7 @@ class BasicBlock(nn.Module):
         out = F.relu(out)
         return out
 
-
+# ResNet Module
 class ResNet(nn.Module):
     def __init__(self, block, num_blocks, num_classes=10):
         super(ResNet, self).__init__()
@@ -192,6 +192,7 @@ def main():
 
 =======
 # save the result
+    plt.save('result/epoch=100.png')
 >>>>>>> c35190aace719a17279441ef91f89b5e87d0cf5e
 
     test_loss = 0.0
