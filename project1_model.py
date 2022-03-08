@@ -8,6 +8,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 train_on_gpu = torch.cuda.is_available()
+# check whether CUDA is available
 if not train_on_gpu:
     print('CUDA is not available')
 else:
@@ -77,7 +78,7 @@ class BasicBlock(nn.Module):
         out = F.relu(out)
         return out
 
-
+# ResNet Module
 class ResNet(nn.Module):
     def __init__(self, block, num_blocks, num_classes=10):
         super(ResNet, self).__init__()
@@ -187,7 +188,7 @@ def main():
     plt.ylabel('accuracy')
     plt.grid(True)
     plt.legend()
-
+# save the result
     plt.save('result/epoch=100.png')
 
     test_loss = 0.0
