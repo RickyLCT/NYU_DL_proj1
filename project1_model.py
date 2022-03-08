@@ -4,6 +4,7 @@ import torch.nn.functional as F
 from torchvision import transforms
 from torchvision import datasets
 import matplotlib.pyplot as plt
+import numpy as np
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -17,7 +18,7 @@ else:
 
 # set the hyperparameter
 batch_size = 64
-learning_rate = 0.001
+learning_rate = 0.005
 epoch_num = 100
 momentum = 0.9
 weight_decay = 5e-4
@@ -42,16 +43,25 @@ def test_transform(x):
 #transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
                                 
 traindata = datasets.CIFAR10('data', train=True, download=True, transform=train_transform)
-traindata, validata = torch.utils.data.random_split(traindata,[40000, 10000])
+#traindata, validata = torch.utils.data.random_split(traindata,[40000, 10000])
 testdata = datasets.CIFAR10('data', train=False, download=True, transform=test_transform)
 
 train_loader = torch.utils.data.DataLoader(traindata, batch_size=batch_size, shuffle=True)
-vali_loader = torch.utils.data.DataLoader(validata, batch_size=batch_size, shuffle=True)
+#vali_loader = torch.utils.data.DataLoader(validata, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(testdata, batch_size=batch_size, shuffle=False)
 
 classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
 
+'''
+hyperparameter for resnet
+N: the number of resudual layer
+B_i: the residual block that is contained in each residual layer (1 layer contains 1 or more blocks)
+C1: The conv layers in any residual block of residual layer i have C_i channels, and C_i+1=2C_i, and C1 needs to be selected
+F_i: conv kernel size in residual layer i
+K_i: skip kernel size in resiudal layer i
+P: average pooling kernel size
+'''
 class BasicBlock(nn.Module):
 
     def __init__(self, in_planes, planes, stride=1):
@@ -121,9 +131,11 @@ net = project1_model().cuda()
 loss = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(net.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
 train_loss_history = []
-vali_loss_history = []
+#vali_loss_history = []
+test_loss_history = []
 train_acc_history = []
-vali_acc_history = []
+#vali_acc_history = []
+test_acc_history = []
 
 def main():
     for epoch in range(epoch_num):
@@ -151,61 +163,63 @@ def main():
         train_acc = train_acc / len(train_loader)
         train_acc_history.append(train_acc)
         
-        vali_loss = 0.0
-        vali_acc = 0.0
+        test_loss = 0.0
+        test_acc = 0.0
         net.eval()
-        for j, data in enumerate(vali_loader):
+        for j, data in enumerate(test_loader):
             with torch.no_grad():
                 images, labels = data
                 images = images.cuda()
                 labels = labels.cuda()
                 predicted_output = net(images)
                 fit = loss(predicted_output,labels)
-                vali_loss += fit.item()
+                test_loss += fit.item()
                 _, pred = predicted_output.max(1)
                 num_correct = (pred==labels).sum().item()
                 acc = num_correct / images.shape[0]
-                vali_acc += acc
-        vali_loss = vali_loss / len(vali_loader)
-        vali_loss_history.append(vali_loss)
-        vali_acc = vali_acc / len(vali_loader)
-        vali_acc_history.append(vali_acc)
-        print('Epoch %s, Train loss %.6f, Validation loss %.6f, Train acc %.6f, Validation acc %.6f'%(epoch, train_loss, vali_loss, train_acc, vali_acc))
+                test_acc += acc
+        test_loss = test_loss / len(test_loader)
+        test_loss_history.append(test_loss)
+        test_acc = test_acc / len(test_loader)
+        test_acc_history.append(test_acc)
+        print('Epoch %s, Train loss %.6f, Test loss %.6f, Train acc %.6f, Test acc %.6f'%(epoch, train_loss, test_loss, train_acc, test_acc))
         
     
     torch.save({'model':net.state_dict()}, './model_file/project1_model.pt')
      
     plt.plot(range(epoch_num),train_loss_history,'-',linewidth=3,label='Train error')
-    plt.plot(range(epoch_num),vali_loss_history,'-',linewidth=3,label='Validation error')
+    plt.plot(range(epoch_num),test_loss_history,'-',linewidth=3,label='Test error')
     plt.xlabel('epoch')
     plt.ylabel('loss')
     plt.grid(True)
     plt.legend()
 
     plt.plot(range(epoch_num),train_acc_history,'-',linewidth=3,label='Train accuracy')
-    plt.plot(range(epoch_num),vali_acc_history,'-',linewidth=3,label='Validation accuracy')
+    plt.plot(range(epoch_num),test_acc_history,'-',linewidth=3,label='Test accuracy')
     plt.xlabel('epoch')
     plt.ylabel('accuracy')
     plt.grid(True)
     plt.legend()
-# save the result
-    plt.save('result/epoch=100.png')
 
-    test_loss = 0.0
-    num_correct = 0
-    for j, data in enumerate(test_loader):
-        with torch.no_grad():
-            images, labels = data
-            images = images.cuda()
-            labels = labels.cuda()
-            predicted_output = net(images)
-            fit = loss(predicted_output,labels)
-            test_loss += fit.item()
-            _, pred = predicted_output.max(1)
-            num_correct += (pred==labels).sum().item()
-    test_loss = test_loss / len(test_loader)
-    test_acc = num_correct / len(testdata)
-    print('Testing set, Average loss %.6f, Average acc = {%.0f} / {%.0f} = %.6f'%(test_loss, num_correct, len(testdata), test_acc))
+    
+    # test the model
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    model = project1_model().to(device)
+    model_path = './model_file/project1_model.pt'
+    model.load_state_dict(torch.load(model_path, map_location=device), strict=False)
+    predicted_output = model(images)
+    print(torch.max(predicted_output, 1))
+    fit = loss(predicted_output, labels)
+    print(labels)
+    print(fit)
+    
+    
+    plt.figure(figsize=(10,10))
+    for idx in np.arange(0,16):
+        plt.subplot(4,4,idx+1)
+        plt.imshow(images[idx].cpu()[0,:,:].squeeze(), cmap=plt.cm.gray)
+
+    
     
 if __name__ == '__main__':
     main()

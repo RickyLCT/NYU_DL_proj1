@@ -31,15 +31,6 @@ batch_size = 64
 learning_rate = 0.01
 epoch_num = 100
 
-# load the dataset
-transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
-#transform = transforms.Compose([transforms.ToTensor()])
-
-traindata = datasets.CIFAR10('data', train=True, download=True, transform=transform)
-testdata = datasets.CIFAR10('data', train=False, download=True, transform=transform)
-
-train_loader = torch.utils.data.DataLoader(traindata, batch_size=batch_size, shuffle=True)
-test_loader = torch.utils.data.DataLoader(testdata, batch_size=batch_size, shuffle=False)
 
 classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
@@ -107,76 +98,11 @@ def project1_model():
 
 net = project1_model().cuda()
 loss = nn.CrossEntropyLoss()
-# optimizer = torch.optim.SGD(net.parameters(), lr = learning_rate)
 
 train_loss_history = np.zeros([20, 20, 20, 100])
 test_loss_history = np.zeros([20, 20, 20, 100])
 train_acc_history = np.zeros([20, 20, 20, 100])
 test_acc_history = np.zeros([20, 20, 20, 100])
-
-# for epoch in range(epoch_num):
-#     # print(epoch)
-#     train_loss = 0.0
-#     train_acc = 0.0
-#     net.train()
-#     for i, train_data in enumerate(train_loader):
-#         inputs, labels = train_data
-#         inputs, labels = inputs.cuda(), labels.cuda()
-#         optimizer.zero_grad()
-        
-#         # forward + backward
-#         predicted_output = net(inputs)
-#         fit = loss(predicted_output, labels)
-#         fit.backward()
-#         optimizer.step()
-#         train_loss += fit.item()
-#         _, pred = predicted_output.max(1)
-#         num_correct = (pred==labels).sum().item()
-#         acc = num_correct / inputs.shape[0]
-#         train_acc += acc
-
-#     train_loss = train_loss/len(train_loader)
-#     train_loss_history.append(train_loss)
-#     train_acc = train_acc / len(train_loader)
-#     train_acc_history.append(train_acc)
-    
-#     test_loss = 0.0
-#     test_acc = 0.0
-#     net.eval()
-#     for j, data in enumerate(test_loader):
-#         with torch.no_grad():
-#             images, labels = data
-#             images = images.cuda()
-#             labels = labels.cuda()
-#             predicted_output = net(images)
-#             fit = loss(predicted_output,labels)
-#             test_loss += fit.item()
-#             _, pred = predicted_output.max(1)
-#             num_correct = (pred==labels).sum().item()
-#             acc = num_correct / images.shape[0]
-#             test_acc += acc
-#     test_loss = test_loss / len(test_loader)
-#     test_loss_history.append(test_loss)
-#     test_acc = test_acc / len(test_loader)
-#     test_acc_history.append(test_acc)
-#     print('Epoch %s, Train loss %.6f, Test loss %.6f, Train acc %.6f, Test acc %.6f'%(epoch, train_loss, test_loss, train_acc*100, test_acc*100))
-
-# torch.save({'model':net.state_dict()}, './model_file/project1_model.pt')
-
-plt.plot(range(epoch_num),train_loss_history,'-',linewidth=3,label='Train error')
-plt.plot(range(epoch_num),test_loss_history,'-',linewidth=3,label='Test error')
-plt.xlabel('epoch')
-plt.ylabel('loss')
-plt.grid(True)
-plt.legend()
-
-
-plt.plot(range(epoch_num),train_acc_history,'-',linewidth=3,label='Train accuracy')
-plt.plot(range(epoch_num),test_acc_history,'-',linewidth=3,label='Test accuracy')
-plt.xlabel('epoch')
-plt.ylabel('accuracy')
-plt.grid(True)
-plt.legend()
 
 test_acc = np.zeros([20, 20, 20])
 
@@ -186,11 +112,12 @@ k_fold = 5
 # hyperparameters array
 batch_sizes = 512
 learning_rates = np.logspace(-5, -1, num=20, endpoint=False)
-epoch_num = 100
+epoch_num = 1
 momentums = np.linspace(0.5, 1, num=20, endpoint=False)
 weight_decays = np.logspace(-5, -1, num=20, endpoint=True)[::-1]
 
 kfold = KFold(n_splits=k_fold, shuffle=True)
+transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
 data = datasets.CIFAR10('data', download=True, transform=transform)
 for rate_id, rate in enumerate(learning_rates):
     for mom_id, mom in enumerate(momentums):
@@ -203,7 +130,6 @@ for rate_id, rate in enumerate(learning_rates):
 
             accs = []
             for fold, (ind_train, ind_test) in enumerate(kfold.split(data)):
-
               print(f'FOLD {fold}');
               print('-------------------------------------')
               train_subsampler = torch.utils.data.SubsetRandomSampler(ind_train)
