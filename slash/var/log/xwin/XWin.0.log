@@ -71,3 +71,153 @@ ddxProcessArgument - screen - Found Valid ``@Monitor'' = 1 arg
 [394931.890] Using Composite redirection
 [394931.890] winClipboardProc - xcb_connect () returned and successfully opened the display.
 [394935.562] winWindowProc - WM_EXITSIZEMOVE
+[442004.375] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[442004.375] winWindowProc - RemoteSession: no
+[442004.375] winUpdateDpi - primary monitor native DPI x 96 y 96
+[442004.375] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[442005.375] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[442005.375] winWindowProc - RemoteSession: no
+[442005.375] winUpdateDpi - primary monitor native DPI x 96 y 96
+[442008.796] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[442008.796] winWindowProc - RemoteSession: no
+[442008.796] winUpdateDpi - primary monitor native DPI x 96 y 96
+[442008.796] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[442022.437] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[442022.437] winWindowProc - RemoteSession: no
+[442022.437] winUpdateDpi - primary monitor native DPI x 96 y 96
+[442022.437] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[443627.859] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[443627.859] winWindowProc - RemoteSession: no
+[443627.859] winUpdateDpi - primary monitor native DPI x 96 y 96
+[443627.859] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[453817.750] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[453817.750] winWindowProc - RemoteSession: no
+[453817.750] winUpdateDpi - primary monitor native DPI x 96 y 96
+[475558.734] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[475558.750] winWindowProc - RemoteSession: no
+[475558.750] winUpdateDpi - primary monitor native DPI x 96 y 96
+[475558.750] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[475931.515] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[475931.515] winWindowProc - RemoteSession: no
+[475931.515] winUpdateDpi - primary monitor native DPI x 96 y 96
+[475931.515] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476086.671] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476086.671] winWindowProc - RemoteSession: no
+[476086.671] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476086.671] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[476238.453] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[476238.453] winWindowProc - RemoteSession: no
+[476238.453] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476238.453] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476263.921] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476263.921] winWindowProc - RemoteSession: no
+[476263.921] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476263.921] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[476299.468] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[476299.468] winWindowProc - RemoteSession: no
+[476299.468] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476299.468] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476356.859] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476356.859] winWindowProc - RemoteSession: no
+[476356.859] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476356.859] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[476378.609] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[476378.609] winWindowProc - RemoteSession: no
+[476378.609] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476378.609] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476430.609] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476430.609] winWindowProc - RemoteSession: no
+[476430.609] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476430.609] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[476431.687] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[476431.687] winWindowProc - RemoteSession: no
+[476431.687] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476431.687] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476435.750] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476435.750] winWindowProc - RemoteSession: no
+[476435.750] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476435.750] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[476474.406] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[476474.406] winWindowProc - RemoteSession: no
+[476474.406] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476474.406] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476500.562] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476500.562] winWindowProc - RemoteSession: no
+[476500.562] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476500.562] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[476525.093] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[476525.093] winWindowProc - RemoteSession: no
+[476525.093] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476525.093] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476557.468] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476557.468] winWindowProc - RemoteSession: no
+[476557.468] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476557.468] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[476571.984] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[476571.984] winWindowProc - RemoteSession: no
+[476571.984] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476571.984] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476625.500] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476625.500] winWindowProc - RemoteSession: no
+[476625.500] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476625.500] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[476676.484] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[476676.484] winWindowProc - RemoteSession: no
+[476676.484] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476676.484] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476717.453] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476717.453] winWindowProc - RemoteSession: no
+[476717.453] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476717.453] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[476798.171] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[476798.171] winWindowProc - RemoteSession: no
+[476798.171] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476798.171] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[476807.312] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[476807.312] winWindowProc - RemoteSession: no
+[476807.312] winUpdateDpi - primary monitor native DPI x 96 y 96
+[476807.312] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[477628.156] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[477628.156] winWindowProc - RemoteSession: no
+[477628.156] winUpdateDpi - primary monitor native DPI x 96 y 96
+[477628.156] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[527995.265] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[527995.265] winWindowProc - RemoteSession: no
+[527995.265] winUpdateDpi - primary monitor native DPI x 96 y 96
+[527995.265] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[527997.875] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[527997.875] winWindowProc - RemoteSession: no
+[527997.875] winUpdateDpi - primary monitor native DPI x 96 y 96
+[528255.046] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[528255.046] winWindowProc - RemoteSession: no
+[528255.062] winUpdateDpi - primary monitor native DPI x 96 y 96
+[528255.062] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[528262.640] winWindowProc - WM_DISPLAYCHANGE - new width: 640 new height: 480 new bpp: 32
+[528262.640] winWindowProc - RemoteSession: no
+[528262.640] winUpdateDpi - primary monitor native DPI x 96 y 96
+[528262.640] winAllocateFBShadowGDI - Creating DIB with width: 2560 height: 1080 depth: 32
+[528263.265] winWindowProc - WM_DISPLAYCHANGE - new width: 1920 new height: 1080 new bpp: 32
+[528263.265] winWindowProc - RemoteSession: no
+[528263.265] winUpdateDpi - primary monitor native DPI x 96 y 96
+[528263.265] winAllocateFBShadowGDI - Creating DIB with width: 3840 height: 1080 depth: 32
+[529536.343] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[529536.343] winWindowProc - RemoteSession: no
+[529536.343] winUpdateDpi - primary monitor native DPI x 96 y 96
+[529536.343] winAllocateFBShadowGDI - Creating DIB with width: 4480 height: 1440 depth: 32
+[541723.812] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[541723.812] winWindowProc - RemoteSession: no
+[541723.812] winUpdateDpi - primary monitor native DPI x 96 y 96
+[541723.843] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[541723.843] winWindowProc - RemoteSession: no
+[541723.843] winUpdateDpi - primary monitor native DPI x 96 y 96
+[541745.843] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[541745.843] winWindowProc - RemoteSession: no
+[541745.843] winUpdateDpi - primary monitor native DPI x 96 y 96
+[541745.859] winWindowProc - WM_DISPLAYCHANGE - new width: 2560 new height: 1440 new bpp: 32
+[541745.859] winWindowProc - RemoteSession: no
+[541745.859] winUpdateDpi - primary monitor native DPI x 96 y 96
+[541853.531] winDeinitMultiWindowWM - Noting shutdown in progress
+[541853.546] winClipboardProc - winClipboardFlushWindowsMessageQueue trapped WM_QUIT message, exiting main loop.
+[541853.546] winMultiWindowXMsgProc - Fatal error 1 on xcb connection
+[541853.578] winDeinitMultiWindowWM - Noting shutdown in progress
+[541853.578] (II) Server terminated successfully (0). Closing log file.

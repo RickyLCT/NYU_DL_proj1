@@ -16,7 +16,7 @@ else:
 
 # set the hyperparameter
 batch_size = 64
-learning_rate = 0.001
+learning_rate = 0.005
 epoch_num = 100
 momentum = 0.9
 weight_decay = 5e-4
@@ -188,7 +188,6 @@ def main():
     plt.grid(True)
     plt.legend()
 
-    plt.save('result/epoch=100.png')
 
     test_loss = 0.0
     num_correct = 0
