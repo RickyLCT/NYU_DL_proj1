@@ -3,7 +3,7 @@
 
 
 
-current accuracy = 0.89
+current accuracy = 0.8947
 
 
 
@@ -34,4 +34,10 @@ hyper-parameter choice
 ​	batch_size = 32
 
 ​	conv kernel size = 5
+
+​	block = [3,4,4,4]
+
+​	residual layer = 4
+
+​	pool kernal size = 4
 

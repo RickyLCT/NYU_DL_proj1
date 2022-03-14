@@ -124,7 +124,8 @@ class ResNet(nn.Module):
         return out
 
 def project1_model():
-    return ResNet(BasicBlock, [2, 2, 2, 2])
+    block = [1,1,1,1]
+    return ResNet(BasicBlock, block)
 
 
 
