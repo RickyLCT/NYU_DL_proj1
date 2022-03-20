@@ -17,15 +17,16 @@ else:
      
 
 # set the hyperparameter
-batch_size = 64
-learning_rate = 0.005
+batch_size = 32
+learning_rate = 0.001
 epoch_num = 100
 momentum = 0.9
 weight_decay = 5e-4
 
 
 def train_transform(x):
-    image_aug = transforms.Compose([transforms.RandomHorizontalFlip(),
+    image_aug = transforms.Compose([transforms.RandomCrop(32, padding=4),
+                                    transforms.RandomHorizontalFlip(),
                                     transforms.RandomRotation(45),
                                     transforms.ColorJitter(brightness=0.5, contrast=0.5, hue=0.5),
                                     transforms.RandomGrayscale(p=0.5),
@@ -46,9 +47,9 @@ traindata = datasets.CIFAR10('data', train=True, download=True, transform=train_
 #traindata, validata = torch.utils.data.random_split(traindata,[40000, 10000])
 testdata = datasets.CIFAR10('data', train=False, download=True, transform=test_transform)
 
-train_loader = torch.utils.data.DataLoader(traindata, batch_size=batch_size, shuffle=True)
+train_loader = torch.utils.data.DataLoader(traindata, batch_size=batch_size, shuffle=True, num_workers=3)
 #vali_loader = torch.utils.data.DataLoader(validata, batch_size=batch_size, shuffle=True)
-test_loader = torch.utils.data.DataLoader(testdata, batch_size=batch_size, shuffle=False)
+test_loader = torch.utils.data.DataLoader(testdata, batch_size=batch_size, shuffle=False, num_workers=3)
 
 classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
@@ -123,7 +124,8 @@ class ResNet(nn.Module):
         return out
 
 def project1_model():
-    return ResNet(BasicBlock, [2, 2, 2, 2])
+    block = [1,1,1,1]
+    return ResNet(BasicBlock, block)
 
 
 
@@ -200,8 +202,8 @@ def main():
     plt.ylabel('accuracy')
     plt.grid(True)
     plt.legend()
-
     
+
     # test the model
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     model = project1_model().to(device)
