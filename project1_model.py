@@ -19,7 +19,7 @@ else:
 # set the hyperparameter
 batch_size = 32
 learning_rate = 0.001
-epoch_num = 100
+epoch_num = 2
 momentum = 0.9
 weight_decay = 5e-4
 
@@ -187,7 +187,8 @@ def main():
         print('Epoch %s, Train loss %.6f, Test loss %.6f, Train acc %.6f, Test acc %.6f'%(epoch, train_loss, test_loss, train_acc, test_acc))
         
     
-    torch.save({'model':net.state_dict()}, './model_file/project1_model.pt')
+    model_path = './model_file/project1_model.pt'
+    torch.save(net.state_dict(), model_path)
      
     plt.plot(range(epoch_num),train_loss_history,'-',linewidth=3,label='Train error')
     plt.plot(range(epoch_num),test_loss_history,'-',linewidth=3,label='Test error')
@@ -207,7 +208,6 @@ def main():
     # test the model
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     model = project1_model().to(device)
-    model_path = './model_file/project1_model.pt'
     model.load_state_dict(torch.load(model_path, map_location=device), strict=False)
     predicted_output = model(images)
     print(torch.max(predicted_output, 1))
