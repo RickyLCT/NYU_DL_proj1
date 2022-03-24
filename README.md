@@ -3,7 +3,7 @@
 
 
 
-current accuracy = 0.8947 -> 0.9006
+current accuracy = 0.8947 -> 0.9006 -> 0.9095
 
 
 
@@ -13,13 +13,7 @@ add data augmentation
 
 ​	RandomHorizontalFlip
 
-​	RandomRotation
-
-​	ColorJitter
-
 ​	RandomGrayscale
-
-
 
 
 
@@ -35,11 +29,15 @@ hyper-parameter choice
 
 ​	conv kernel size = 3
 
-​	block = [3,4,4,4]
+​	block = [2,2,2,2]
 
 ​	residual layer = 4
 
 ​	pool kernal size = 4
 
-​	channel = 80
+​	channel = 42
+
+
+
+Run the file project1_model.py. 
 
