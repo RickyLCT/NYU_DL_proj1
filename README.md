@@ -3,7 +3,7 @@
 
 
 
-current accuracy = 0.8947 -> 0.9006
+current accuracy = 0.8947 -> 0.9006 -> 0.9095
 
 
 
@@ -14,8 +14,6 @@ add data augmentation
 ​	RandomHorizontalFlip
 
 ​	RandomGrayscale
-
-
 
 
 
@@ -38,4 +36,8 @@ hyper-parameter choice
 ​	pool kernal size = 4
 
 ​	channel = 42
+
+
+
+Run the file project1_model.py. 
 

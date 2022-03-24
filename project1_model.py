@@ -28,7 +28,7 @@ def train_transform(x):
                                     transforms.RandomHorizontalFlip(p=0.5),
                                     #transforms.RandomRotation(45),
                                     #transforms.ColorJitter(brightness=0.5, contrast=0.5, hue=0.5),
-                                    transforms.RandomGrayscale(0.5),
+                                    transforms.RandomGrayscale(p=0.5),
                                     transforms.ToTensor(),
                                     transforms.Normalize((0.4914,0.4822,0.4465), (0.2023,0.1994,0.2010))])
     x = image_aug(x)
@@ -189,6 +189,9 @@ def main():
     model_path = './model_file/project1_model.pt'
     torch.save(net.state_dict(), model_path)
      
+    # count the number of trainable parametes
+    sum(p.numel() for p in net.parameters() if p.requires_grad)
+    
     plt.plot(range(epoch_num),train_loss_history,'-',linewidth=3,label='Train error')
     plt.plot(range(epoch_num),test_loss_history,'-',linewidth=3,label='Test error')
     plt.xlabel('epoch')
