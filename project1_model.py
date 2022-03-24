@@ -18,11 +18,10 @@ else:
 
 # set the hyperparameter
 batch_size = 32
-learning_rate = 0.001
-epoch_num = 100
+lr = 0.001
+epoch_num = 10
 momentum = 0.9
 weight_decay = 5e-4
-
 
 def train_transform(x):
     image_aug = transforms.Compose([transforms.RandomCrop(32, padding=4),
@@ -131,7 +130,7 @@ def project1_model():
 
 net = project1_model().cuda()
 loss = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(net.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
+optimizer = torch.optim.SGD(net.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay)
 train_loss_history = []
 #vali_loss_history = []
 test_loss_history = []
@@ -187,7 +186,8 @@ def main():
         print('Epoch %s, Train loss %.6f, Test loss %.6f, Train acc %.6f, Test acc %.6f'%(epoch, train_loss, test_loss, train_acc, test_acc))
         
     
-    torch.save({'model':net.state_dict()}, './model_file/project1_model.pt')
+    model_path = './model_file/project1_model.pt'
+    torch.save(net.state_dict(), model_path)
      
     plt.plot(range(epoch_num),train_loss_history,'-',linewidth=3,label='Train error')
     plt.plot(range(epoch_num),test_loss_history,'-',linewidth=3,label='Test error')
@@ -207,7 +207,6 @@ def main():
     # test the model
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     model = project1_model().to(device)
-    model_path = './model_file/project1_model.pt'
     model.load_state_dict(torch.load(model_path, map_location=device), strict=False)
     predicted_output = model(images)
     print(torch.max(predicted_output, 1))
