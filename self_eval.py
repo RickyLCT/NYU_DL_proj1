@@ -44,20 +44,21 @@ def main():
     validloader = torch.utils.data.DataLoader(
       validset, batch_size=1000)
 
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    #device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cpu')
 
-    try:
-        model = load_model(device)
-        model_path = './model_file/project1_model.pt'
-        model.load_state_dict(torch.load(model_path, map_location=device), strict=False)
-        criterion = nn.CrossEntropyLoss()
-        
-        model.eval()
-        v_acc, _ = test(model, validloader, criterion, device)
-        print('Valid Accuracy: {:.1f}'.format(v_acc))
+    #try:
+    model = load_model(device)
+    model_path = './model_file/project1_model.pt'
+    model.load_state_dict(torch.load(model_path, map_location=device), strict=False)
+    criterion = nn.CrossEntropyLoss()
+    
+    model.eval()
+    v_acc, _ = test(model, validloader, criterion, device)
+    print('Valid Accuracy: {:.1f}'.format(v_acc))
 
-    except:
-        print("FAIL")
+    #except:
+        #print("FAIL")
 
 if __name__ == '__main__':
     main()
